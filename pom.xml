@@ -4,9 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--To make war file, please, invoke command:
+    mvn package
+    or
+    mvn compile war:war
+    -->
+
     <groupId>com.softserverinc.softdev</groupId>
     <artifactId>agilesoftware</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>Agile Software Project</name>
+    <url>http://localhost/</url>
 
     <properties>
         <java-version>1.8</java-version>
@@ -138,7 +147,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
-            <version>5.2.4.Final</version>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>5.0.1.Final</version>
         </dependency>
 
         <!-- MySQL JDBC connector -->
@@ -156,10 +170,12 @@
         <plugins>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <!-- Web.xml is not required with Servlet 3.0+ specification -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warSourceDirectory>web/WEB-INF</warSourceDirectory>
                 </configuration>
                 <version>${maven-war-plugin-version}</version>
             </plugin>
