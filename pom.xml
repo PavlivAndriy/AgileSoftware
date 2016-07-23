@@ -176,6 +176,23 @@
                     <!-- Web.xml is not required with Servlet 3.0+ specification -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <warSourceDirectory>web/WEB-INF</warSourceDirectory>
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>web/WEB-INF/resources</directory>
+                            <targetPath>WEB-INF/resources</targetPath>
+                        </resource>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>web/WEB-INF/layout</directory>
+                            <targetPath>WEB-INF/layout</targetPath>
+                        </resource>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>web/WEB-INF/views</directory>
+                            <targetPath>WEB-INF/views</targetPath>
+                        </resource>
+                    </webResources>
                 </configuration>
                 <version>${maven-war-plugin-version}</version>
             </plugin>
@@ -189,6 +206,74 @@
                     <source>${java-version}</source>
                     <target>${java-version}</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.dbmaintain</groupId>
+                <artifactId>dbmaintain-maven-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <scriptLocations>${project.basedir}/dbscripts</scriptLocations>
+                    <archiveFileName>agilesoftware_db.jar</archiveFileName>
+                    <autoCreateDbMaintainScriptsTable>true</autoCreateDbMaintainScriptsTable>
+                    <fromScratchEnabled>true</fromScratchEnabled>
+                    <databases>
+                        <database>
+                            <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                            <userName>root</userName>
+                            <password>root</password>
+                            <url>jdbc:mysql://localhost:3306/agilesoftware?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</url>
+                            <schemaNames>agilesoftware</schemaNames>
+                        </database>
+                    </databases>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>db-jar</id>
+                        <goals>
+                            <goal>createScriptArchive</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>db-clear</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>clearDatabase</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>db-update</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>updateDatabase</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>db-drop-constraints</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>disableConstraints</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>db-clean</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>cleanDatabase</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${jdbc-driver-version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
         </plugins>
