@@ -4,9 +4,8 @@ CREATE TABLE `Users` (
   `firstName` varchar(25) NOT NULL,
   `lastName` varchar(25) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(512) NOT NULL,
   `role` varchar(15) NOT NULL,
-  `projectId` INT NOT NULL,
   `description` TEXT,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB;
@@ -67,7 +66,6 @@ CREATE TABLE `WorkLogs` (
 ) ENGINE=INNODB;
 
 
-ALTER TABLE `Users` ADD CONSTRAINT `Users_fk0` FOREIGN KEY (`projectId`) REFERENCES `Projects`(`id`);
 ALTER TABLE `Projects` ADD CONSTRAINT `Projects_fk0` FOREIGN KEY (`projectManagerId`) REFERENCES `Users`(`id`);
 ALTER TABLE `Releases` ADD CONSTRAINT `Releases_fk0` FOREIGN KEY (`projectId`) REFERENCES `Projects`(`id`);
 ALTER TABLE `Issues` ADD CONSTRAINT `Issues_fk0` FOREIGN KEY (`projectId`) REFERENCES `Projects`(`id`);

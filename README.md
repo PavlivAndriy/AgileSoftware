@@ -6,7 +6,9 @@ Before running the project.
 
 Please, create a database with Maven command issued from project root dir
 
-mvn dbmaintain:updateDatabase
+**mvn dbmaintain:updateDatabase**
+
+In a Database will be user with admin rights, e-mail:  **admin@ss.com**, and password:  **admin**
 
 
 # Developing
@@ -15,11 +17,11 @@ mvn dbmaintain:updateDatabase
 
 For dropping a database is a Maven command issued from project root dir
 
-mvn dbmaintain:clearDatabase
+**mvn dbmaintain:clearDatabase**
 
 For removing the data of all database tables
 
-mvn dbmaintain:cleanDatabase
+**mvn dbmaintain:cleanDatabase**
 
 
 # Troubleshooting
@@ -28,4 +30,4 @@ In case a Tomcat will give you a warning like org.apache.catalina.webresources.C
 
 Please, In your $CATALINA_BASE/conf/context.xml add block before </Context>
 
-<Resources cachingAllowed="true" cacheMaxSize="100000" />
+&lt;Resources cachingAllowed="true" cacheMaxSize="100000" /&gt;

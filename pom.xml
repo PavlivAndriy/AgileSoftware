@@ -217,6 +217,9 @@
                     <archiveFileName>agilesoftware_db.jar</archiveFileName>
                     <autoCreateDbMaintainScriptsTable>true</autoCreateDbMaintainScriptsTable>
                     <fromScratchEnabled>true</fromScratchEnabled>
+                    <qualifiers>
+                        refdata
+                    </qualifiers>
                     <databases>
                         <database>
                             <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
@@ -249,6 +252,9 @@
                         <goals>
                             <goal>updateDatabase</goal>
                         </goals>
+                        <configuration>
+                            <includedQualifiers>refdata</includedQualifiers>
+                        </configuration>
                     </execution>
 
                     <execution>
