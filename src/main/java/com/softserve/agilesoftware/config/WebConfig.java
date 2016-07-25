@@ -1,6 +1,7 @@
 package com.softserve.agilesoftware.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @EnableWebMvc
 @Configuration
+@ComponentScan(basePackages = {"com.softserve.agilesoftware"})
 @Import({DBConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
@@ -26,9 +28,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         super.addViewControllers(registry);
 
-        // TODO: 18.07.16 index mapping
+        // TODO: 18.07.16 rest views mapping
         //default URI /  ->  index.jsp
         registry.addViewController("/").setViewName("views/index");
+        registry.addViewController("/login").setViewName("views/index");
     }
 
     @Override

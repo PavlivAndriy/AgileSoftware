@@ -17,6 +17,7 @@
     <link href="<spring:url value='css/bootstrap.min.css' />" rel="stylesheet">
     <link href="<spring:url value='css/bootstrap-theme.min.cs' />" rel="stylesheet">
     <link href="<spring:url value='css/font-awesome.min.css' />" rel="stylesheet">
+    <link href="<spring:url value='css/site.css' />" rel="stylesheet">
 </head>
 <body>
 <div class="page">

@@ -7,5 +7,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <header class="container-fluid">
-    <h1>Header</h1>
+    <div class="row">
+        <div class="col-sm-9">
+            <h2>AgileSoftware - An essential tool for a project developer</h2>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
 </header>

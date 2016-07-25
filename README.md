@@ -2,18 +2,20 @@
 
 ## Database
 
-Before running the project.
-
-Please, create a database with Maven command issued from project root dir
-
-**mvn dbmaintain:updateDatabase**
-
 In a Database will be user with admin rights, e-mail:  **admin@ss.com**, and password:  **admin**
 
 
 # Developing
 
 ## Database
+
+For creating empty tables, please, issue command from project root dir
+
+**mvn dbmaintain:updateDatabase@db-update-create**
+
+For creating tables and populating them with some reference data, please, issue command from project root dir
+
+**mvn dbmaintain:updateDatabase@db-update-refdata**
 
 For dropping a database is a Maven command issued from project root dir
 
