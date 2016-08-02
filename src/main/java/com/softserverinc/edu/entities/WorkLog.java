@@ -6,52 +6,68 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
- * Created by 37.0 on 02.08.2016.
+ * Created by 37.0 on 03.08.2016.
  */
+
 @Entity
-public class Label {
+public class WorkLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 25)
-    private String title;
-
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "issueId", referencedColumnName = "id", nullable = false)
     private Issue issueIdById;
 
-    public Label() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
+    private User userIdById;
 
-    }
+    @Column(name = "time", nullable = false)
+    private Date time;
 
-    public Label(String title, Issue issueIdById) {
-        this.title = title;
-        this.issueIdById = issueIdById;
-    }
+    @Column(name = "amount")
+    private int amount;
 
     public Long getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Issue getIssueById() {
+    public Issue getIssueIdById() {
         return issueIdById;
     }
 
-    public void setIssueId(Issue issueIdById) {
+    public void setIssueIdById(Issue issueIdById) {
         this.issueIdById = issueIdById;
+    }
+
+    public User getUserIdById() {
+        return userIdById;
+    }
+
+    public void setUserIdById(User userIdById) {
+        this.userIdById = userIdById;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override

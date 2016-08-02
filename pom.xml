@@ -28,6 +28,8 @@
         <!--Maven plugins-->
         <maven-war-plugin-version>2.6</maven-war-plugin-version>
         <maven-compiler-plugin-version>3.5.1</maven-compiler-plugin-version>
+
+        <apache.commons-version>3.0</apache.commons-version>
     </properties>
 
     <dependencies>
@@ -150,6 +152,13 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>5.2.4.Final</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache.commons-version}</version>
         </dependency>
 
 
