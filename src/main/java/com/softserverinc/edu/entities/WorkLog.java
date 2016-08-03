@@ -17,21 +17,21 @@ public class WorkLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "issueId", referencedColumnName = "id", nullable = false)
-    private Issue issueIdById;
+    @JoinColumn(referencedColumnName = "id", nullable = false)
+    private Issue issueId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
-    private User userIdById;
+    @JoinColumn(referencedColumnName = "id", nullable = false)
+    private User userId;
 
-    @Column(name = "time", nullable = false)
+    @Column(nullable = false)
     private Date time;
 
-    @Column(name = "amount")
+    @Column
     private int amount;
 
     public Long getId() {
@@ -39,19 +39,19 @@ public class WorkLog {
     }
 
     public Issue getIssueIdById() {
-        return issueIdById;
+        return issueId;
     }
 
     public void setIssueIdById(Issue issueIdById) {
-        this.issueIdById = issueIdById;
+        this.issueId = issueIdById;
     }
 
     public User getUserIdById() {
-        return userIdById;
+        return userId;
     }
 
     public void setUserIdById(User userIdById) {
-        this.userIdById = userIdById;
+        this.userId = userIdById;
     }
 
     public Date getTime() {

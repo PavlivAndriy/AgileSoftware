@@ -154,13 +154,12 @@
             <version>5.2.4.Final</version>
         </dependency>
 
-
+        <!-- Assists in creating consistent equals(Object), toString(), hashCode(), and compareTo(Object) methods -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${apache.commons-version}</version>
         </dependency>
-
 
     </dependencies>
 

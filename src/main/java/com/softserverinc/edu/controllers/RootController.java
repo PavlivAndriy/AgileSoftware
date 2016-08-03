@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 /**
  * Created by volodymyr on 7/30/16.
@@ -74,6 +73,16 @@ public class RootController {
         status.setComplete();
 
         return "index";
+    }
+
+    @RequestMapping(value="/worklog")
+    public String worklogIndex() {
+        return "worklog";
+    }
+
+    @RequestMapping(value="/label")
+    public String labelIndex() {
+        return "label";
     }
 
 }

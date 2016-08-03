@@ -40,5 +40,26 @@
         </put-list-attribute>
     </definition>
 
+    <definition name="worklog" extends="abstractDefaultTemplate">
+        <put-attribute name="title" value="WorkLog page" />
+        <put-attribute name="content" value="/WEB-INF/views/worklog.jsp" />
+        <put-list-attribute name="stylesheets" inherit="true">
+            <add-attribute value="/css/login.css"/>
+        </put-list-attribute>
+        <put-list-attribute name="javascripts" inherit="true">
+            <add-attribute value="/js/index-page.js"/>
+        </put-list-attribute>
+    </definition>
+
+    <definition name="label" extends="abstractDefaultTemplate">
+        <put-attribute name="title" value="Label page" />
+        <put-attribute name="content" value="/WEB-INF/views/label.jsp" />
+        <put-list-attribute name="stylesheets" inherit="true">
+            <add-attribute value="/css/login.css"/>
+        </put-list-attribute>
+        <put-list-attribute name="javascripts" inherit="true">
+            <add-attribute value="/js/index-page.js"/>
+        </put-list-attribute>
+    </definition>
 
 </tiles-definitions>

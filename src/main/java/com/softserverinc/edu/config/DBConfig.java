@@ -81,7 +81,7 @@ public class DBConfig extends WebMvcConfigurerAdapter {
         entityManagerFactory.setDataSource(dataSource());
         entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter());
         //Scan package for existing entities
-        entityManagerFactory.setPackagesToScan("com.softserverinc.edu.entity");
+        entityManagerFactory.setPackagesToScan("com.softserverinc.edu.entities");
         //For JPA properties
         Properties properties = new Properties();
         //create tables based on Java objects, first drop

@@ -1,11 +1,12 @@
 package com.softserverinc.edu.entities;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
+import java.util.*;
 
 /**
  * Created by 37.0 on 02.08.2016.
@@ -15,24 +16,25 @@ public class Label {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 25)
+    @Column(nullable = false, length = 25)
     private String title;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "issueId", referencedColumnName = "id", nullable = false)
-    private Issue issueIdById;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(referencedColumnName = "id", nullable = false)
+    private Set<Issue> issueIdSet;
 
     public Label() {
 
     }
 
-    public Label(String title, Issue issueIdById) {
+    public Label(String title, Set<Issue> issueIdSet) {
         this.title = title;
-        this.issueIdById = issueIdById;
+        this.issueIdSet = issueIdSet;
     }
+
 
     public Long getId() {
         return id;
@@ -46,12 +48,15 @@ public class Label {
         this.title = title;
     }
 
-    public Issue getIssueById() {
-        return issueIdById;
+    public Set<Issue> getIssueIdSet() {
+        if (this.issueIdSet == null) {
+            this.issueIdSet = new HashSet<Issue>();
+        }
+        return this.issueIdSet;
     }
 
-    public void setIssueId(Issue issueIdById) {
-        this.issueIdById = issueIdById;
+    public void setIssueIdSet(Set<Issue> issueIdSet) {
+        this.issueIdSet = issueIdSet;
     }
 
     @Override
